@@ -1,0 +1,53 @@
+version: 2.1
+
+orbs:
+  nx: nrwl/nx@1.6.2
+
+jobs:
+  test:
+    docker:
+      - image: cimg/node:lts-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run:
+          name: Install pnpm
+          command: npm install --prefix=$HOME/.local -g pnpm@8.11.0
+      - run:
+          name: Install dependencies
+          command: pnpm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Lint
+          command: pnpm nx run api:lint
+      - run:
+          name: Run tests
+          command: pnpm nx run api:test
+  deploy:
+    docker:
+      - image: circleci/python:3.9
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: Deploy
+          command: bash apps/api/deploy/deploy.sh $PORTAINER_URL $PORTAINER_API_TOKEN $PORTAINER_ENDPOINT $STACK_ID $DOCKER_ACCESS_TOKEN $CIRCLE_SHA1
+
+workflows:
+  version: 2
+  test-and-deploy:
+    jobs:
+      - test
+      - deploy:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master

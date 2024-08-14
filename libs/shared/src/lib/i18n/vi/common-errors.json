@@ -1,0 +1,29 @@
+{
+  "not-found": "{prop} không tìm thấy",
+  "bad-request": "Có lỗi xảy ra",
+  "class-validator": {
+    "is-uuid": "Giá trị trường phải là UUID",
+    "is-positive": "Giá trị trường phải là số dương",
+    "is-tmp-key": "Giá trị trường phải là một mã khóa tạm thời",
+    "is-string": "Giá trị trường phải là một chuỗi",
+    "is-number": "Giá trị trường phải là một số",
+    "is-int": "Giá trị trường phải là một số nguyên",
+    "is-not-empty": "Trường không nên trống",
+    "is-email": "Giá trị trường phải là một địa chỉ email chính xác",
+    "min-length": "Giá trị trường cần ít nhất {constraints.0} ký tự",
+    "max-length": "Giá trị trường cần ít hơn {constraints.0} ký tự",
+    "min": "Số tối thiểu cho phép là {constraints.0}",
+    "max": "Số tối đa cho phép là {constraints.0}",
+    "weak-password": "Mật khẩu phải chứa các ký tự in hoa, các ký tự in thường và số hoặc ký hiệu",
+    "is-phone-number": "Giá trị trường phải là một số điện thoại chính xác",
+    "is-mobile-phone": "Giá trị trường phải là một số điện thoại di động chính xác",
+    "is-postal-code": "Giá trị trường phải là một mã bưu chính chính xác",
+    "is-date": "Giá trị trường phải là một ngày chính xác",
+    "is-in": "Giá trị trường phải là một mục từ {constraints.0}",
+    "is-array": "Giá trị trường phải là một mảng",
+    "array-min-length": "Độ dài tối thiểu của mảng cần ít nhất {constraints.0} phần tử",
+    "is-boolean": "Giá trị trường phải là một boolean",
+    "is-slug": "Chữ cái in hoa, chữ cái in thường, dấu gạch ngang và số được cho phép",
+    "is-enum": "Giá trị trường phải là một trong các giá trị sau: {constraints.0}"
+  }
+}

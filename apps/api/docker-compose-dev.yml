@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  api:
+    image: datn-api:lts
+    container_name: datn_api
+    env_file:
+      - .env
+    # command: ["tail", "-f", "/dev/null"]
+    ports:
+      - 3001:3001
